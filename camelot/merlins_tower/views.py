@@ -4,4 +4,4 @@ from django.shortcuts import render, HttpResponse
 
 
 def landing(request):
-    
+    return HttpResponse("welcome to the page")
