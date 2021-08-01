@@ -1,7 +1,25 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
+from .models import *
 
 # Create your views here.
 
 
 def landing(request):
-    return HttpResponse("welcome to the page")
+    return render(request, 'landing.html')
+
+def books(request):
+    context = {
+        'books': Book.objects.all()
+    }
+    return render(request,'books.html', context)
+
+def add_book(request):
+    print(['title'], ['author'], ['series'], ['isbn'])
+    Book.objects.create(
+        title=request.POST['title'],
+        author=request.POST['author'],
+        series=request.POST['series'],
+        isbn=request.POST['isbn']
+    )
+    print('book created')
+    return redirect('/books')

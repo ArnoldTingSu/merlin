@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#info {
+    border: 1px solid black;
+    margin-bottom: 15px;
+    font-family: sans-serif;
+    background-color: #eeeeee;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    margin: 10px;
+    min-width: 400px;
+}
+#info td {
+    text-align: center;
+    border-top: 1px black solid;
+    padding: 12px 15px;
+    
+}
+
+thead{
+    background-color: aquamarine;
+    font-weight: bold;
+    padding: 4px;
+}

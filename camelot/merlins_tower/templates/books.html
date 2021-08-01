@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merlin's Books</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/books.css' %}">
+</head>
+<body>
+    <div id="header">
+        <h1>Merlin's Books</h1>
+    </div>
+    <div id="input">
+        <form action="add_book" id="form" method='POST'>
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Title:</td>
+                    <td><input type="text" name="title"></td>
+                </tr>
+                <tr>
+                    <td>Author:</td>
+                    <td><input type="text" name="author"></td>
+                </tr>
+                <tr>
+                    <td>Series:</td>
+                    <td><input type="text" name="series"></td>
+                </tr>
+                <tr>
+                    <td>ISBN:</td>
+                    <td><input type="text" name="isbn"></td>
+                </tr>
+            </table>
+            <input type="submit">
+        </form>
+            <hr>
+            <table id="info">
+                <thead>
+                    <td>Title</td>
+                    <td>Author</td>
+                    <td>Series</td>
+                    <td>ISBN</td>
+                </thead>
+                
+                {% for book in books %}
+                <tr>
+                    <td>{{book.title}}</td>
+                    <td>{{book.author}}
+                    </td>
+                    <td>{{book.series}}</td>
+                    <td>{{book.isbn}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+
+    </div>
+</body>
+</html>
