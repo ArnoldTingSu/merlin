@@ -38,11 +38,11 @@
         </form>
             <hr>
             <table id="info">
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for books or authors..." title="Type in a name">
+            <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for books or authors..." title="Type in a name of an author or book">
                 <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Series</th>
+                        <th onclick="sortTable(0)">Title</th>
+                        <th onclick="sortTable(1)">Author</th>
+                        <th onclick="sortTable(2)">Series</th>
                         <th>ISBN</th>
                         <th>Delete</th>
                 </tr>
@@ -53,12 +53,13 @@
                     </td>
                     <td>{{book.series}}</td>
                     <td>{{book.isbn}}</td>
-                    <td><a href="{{book.id}}/delete">delete</a></td>
+                    <td><a href="{{book.id}}/delete">[x]</a></td>
                 </tr>
-                {%endfor%}
+                {% endfor %}
             </table>
+            
             <script>
-                function myFunction() {
+                function searchFunction() {
                     var input, filter, table, tr, td, i, txtValue;
                     input = document.getElementById("myInput");
                     filter = input.value.toUpperCase();
@@ -74,6 +75,42 @@
                                 tr[i].style.display = "none";
                             }
                         }       
+                    }
+                }
+                function sortTable(n) {
+                    var infoTable, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+                    infoTable = document.getElementById("info")
+                    switching= true;
+                    dir = "asc";
+                    while(switching) {
+                        switching = false;
+                        rows = infoTable.rows;
+                        for(i = 1; i < (rows.length - 1); i++) {
+                            shouldSwitch = false;
+                            x = rows[i].getElementsbyTagName("TD")[n];
+                            y = rows[i + 1].getElementsbyTagname("TD")[n];
+                            if (dir == "asc") {
+                                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                    shouldSwitch = true;
+                                    break;
+                                }
+                            } else if (dir == "desc") {
+                                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                    shouldSwitch = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (shouldSwitch) {
+                            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                            switching = true;
+                            switchcount ++;
+                        } else {
+                            if (switchcount == 0 && dir == "asc") {
+                                dir = "desc";
+                                switching = true;
+                            }
+                        }
                     }
                 }
             </script>
