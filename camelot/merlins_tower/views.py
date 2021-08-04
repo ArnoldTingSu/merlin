@@ -23,3 +23,8 @@ def add_book(request):
     )
     print('book created')
     return redirect('/books')
+
+def delete(request, id):
+    selector = Book.objects.get(id=id)
+    selector.delete()
+    return redirect('/books')

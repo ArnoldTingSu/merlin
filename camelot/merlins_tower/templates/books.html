@@ -44,6 +44,7 @@
                         <th>Author</th>
                         <th>Series</th>
                         <th>ISBN</th>
+                        <th>Delete</th>
                 </tr>
                 {% for book in books %}
                 <tr>
@@ -52,6 +53,7 @@
                     </td>
                     <td>{{book.series}}</td>
                     <td>{{book.isbn}}</td>
+                    <td><a href="{{book.id}}/delete">delete</a></td>
                 </tr>
                 {%endfor%}
             </table>
