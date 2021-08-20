@@ -28,3 +28,9 @@ def delete(request, id):
     selector = Book.objects.get(id=id)
     selector.delete()
     return redirect('/books')
+
+### updating values on books ####
+
+def update(request, id):
+    selector = Book.objects.get(id=id)
+    return redirect('/books')

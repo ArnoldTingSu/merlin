@@ -45,6 +45,7 @@
                         <th onclick="sortTable(2)">Series</th>
                         <th>ISBN</th>
                         <th>Delete</th>
+                        <th>Update</th>
                 </tr>
                 {% for book in books %}
                 <tr>
@@ -54,6 +55,7 @@
                     <td>{{book.series}}</td>
                     <td>{{book.isbn}}</td>
                     <td><a href="{{book.id}}/delete">[x]</a></td>
+                    <td><a href="{{book.id}}/edit">Edit</a></td>
                 </tr>
                 {% endfor %}
             </table>
