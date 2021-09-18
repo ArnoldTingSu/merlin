@@ -5,9 +5,6 @@ from .models import *
 
 
 def landing(request):
-    return render(request, 'landing.html')
-
-def snow(request):
     return render(request, 'snow.html')
 
 def books(request):
