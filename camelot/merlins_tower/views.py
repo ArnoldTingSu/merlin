@@ -9,9 +9,12 @@ def landing(request):
 
 def barracks(request):
     context = {
-        randomNumber:random.randint(1,8000)
+        "monsterSet1":random.sample(range(1,8000), 5),
+        "monsterSet2":random.sample(range(1,8000), 5),
+        "monsterSet3":random.sample(range(1,8000), 5),
+        "monsterSet4":random.sample(range(1,8000), 5),
+        "monsterSet5":random.sample(range(1,8000), 5)
     }
-    randomNumber = random.randint(1,8000)
     return render(request, 'barracks.html', context)
 
 def books(request):
