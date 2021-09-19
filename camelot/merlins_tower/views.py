@@ -1,11 +1,18 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
-
+import random
 # Create your views here.
 
 
 def landing(request):
     return render(request, 'snow.html')
+
+def barracks(request):
+    context = {
+        randomNumber:random.randint(1,8000)
+    }
+    randomNumber = random.randint(1,8000)
+    return render(request, 'barracks.html', context)
 
 def books(request):
     context = {
