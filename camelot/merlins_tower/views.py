@@ -13,7 +13,8 @@ def barracks(request):
         "monsterSet2":random.sample(range(1,8000), 5),
         "monsterSet3":random.sample(range(1,8000), 5),
         "monsterSet4":random.sample(range(1,8000), 5),
-        "monsterSet5":random.sample(range(1,8000), 5)
+        "monsterSet5":random.sample(range(1,8000), 5),
+        "monsterSet6":random.sample(range(1,8000), 5),
     }
     return render(request, 'barracks.html', context)
 
