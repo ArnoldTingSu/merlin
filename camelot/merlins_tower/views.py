@@ -8,16 +8,23 @@ def landing(request):
     return render(request, 'snow.html')
 
 def barracks(request):
-    context = {
-        "monsterSet1":random.sample(range(1,20), 5),
-        "monsterSet2":random.sample(range(1,20), 5),
-        "monsterSet3":random.sample(range(1,20), 5),
-        "monsterSet4":random.sample(range(1,20), 5),
-        "monsterSet5":random.sample(range(1,20), 5),
-        "monsterSet6":random.randint(1,20),
-    }
-    return render(request, 'barracks.html', context)
+    return render(request, 'barracks.html')
 
+def roll(request):
+    context = {
+        "playerRoll":random.randint(1,20),
+        "monsterRoll": random.randint(1,20),
+    }
+    return redirect('/battlefield', context)
+
+def new_hero(request):
+    Hero.objects.create(
+        name=request.POST['name']
+    )
+    return redirect('/battlefield')
+
+
+######## Arcane Library ##########
 def books(request):
     context = {
         'books': Book.objects.all()

@@ -7,14 +7,30 @@
     <title>Document</title>
 </head>
 <body>
+
+
     <h1>THIS IS THE BARRACKS</h1>
-    <h2>{{monsterSet1}}</h2>
-    <h2>{{monsterSet2}}</h2>
-    <h2>{{monsterSet3}}</h2>
-    <h2>{{monsterSet4}}</h2>
-    <h2>{{monsterSet5}}</h2>
-    <h2>{{monsterSet6}}</h2>
-    <form action="barracks">
+
+    <h2>Create your Hero!</h2>
+    <form action="new_hero">
+        {% csrf_token %}
+        <input type="text" name=name>
+        <input type="submit">
+    </form>
+
+    
+    <h2>You have rolled, {{playerRoll}} + {{modifer}}</h2>
+    <h2>Monster has rolled, {{monsterRoll}} + {modifer}</h2>
+    {% if playerRoll < monsterRoll %}
+        <p>Monster damages you</p>
+        {% elif playerRoll == monsterRoll %}
+        <p>Monster blocks your attack</p>
+        {% else %}
+        <p>You damaged monster</p>
+    {% endif %}
+
+ 
+    <form action="roll">
         <input type="submit" value="roll dice">
     </form>
 </body>
